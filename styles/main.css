@@ -1,0 +1,81 @@
+@font-face {
+    font-family: space-font;
+    src: url("../assets/xirod.ttf")
+}
+
+body {
+    font-family: space-font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.firstpage, .first-container {
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+.first-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 1s;
+    opacity: 1;
+}
+
+h1 {
+    font-size: 2.3rem;
+    text-shadow: 3px 3px 20px white;
+    text-align: center;
+}
+
+.play-button {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.play-button span {
+    display: inline-block; 
+    position: relative;
+    transition: 0.5s;
+} 
+
+.rocket {
+    position: absolute;
+    opacity: 0;
+    bottom: -20px;
+    right: 0;
+    transition: 0.5s;
+}
+
+.play-button:hover span {
+    padding-right: 25px;
+}
+
+.play-button:hover .rocket {
+    opacity: 1;
+    bottom: 0;
+    right: -10px;
+}
+
+.hidden {
+    opacity: 0;
+}

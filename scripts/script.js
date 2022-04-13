@@ -155,4 +155,15 @@ function game() {
     (playerScore > computerScore) ? console.log("You win!") : console.log("You lose")
 }
 
-game();
+//game();
+
+const audio = document.querySelector("audio.creepy");
+const body = document.querySelector("body");
+const video = document.querySelector("video");
+const firstpage = document.querySelector(".first-container");
+
+const displayPage = () => {
+    firstpage.classList.remove("hidden");
+}
+
+video.addEventListener("ended", displayPage)
