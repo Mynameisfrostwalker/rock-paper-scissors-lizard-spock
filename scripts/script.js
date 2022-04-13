@@ -160,10 +160,73 @@ function game() {
 const audio = document.querySelector("audio.creepy");
 const body = document.querySelector("body");
 const video = document.querySelector("video");
-const firstpage = document.querySelector(".first-container");
+const firstContainer = document.querySelector(".first-container");
+const playButton = document.querySelector(".play-button")
+const firstPage = document.querySelector(".firstpage")
+const secondPage = document.querySelector(".secondpage");
+const story = document.querySelector("p.story");
+const cards = document.querySelector(".cards");
+const typediv= document.querySelector(".typewriter");
 
-const displayPage = () => {
-    firstpage.classList.remove("hidden");
+const textArray = [
+    "In the year 2055, humanity finally arrived on Mars.", 
+    "Decades of global human pollution, had rendered the earth uninhabitable",
+    "The land was barren and the seas, desolate.",
+    "In search of a new home, humanity arrived in droves on Mars.",
+    "And for a while, all was well...",
+    "Humanity entered its second golden age, it had learned from its mistakes.",
+    "Peace and prosperity reigned, learning and culture florished",
+    "Until tragedy struck",
+    "The Unknowns, visitors from a distant world far beyond the reaches of our galaxies had awoken.",
+    "They had wiped out the Martians, and for eons had slept underneath the surface of Mars.",
+    "And now they were going to destroy humanity like the destroyed Martian civilization at its peak.",
+    "Only beating them in a game of rock, paper, scissors, lizzard, spock could prevent that fate",
+    "Do you have what it takes to save humanity?"
+]
+
+let textLine = 0
+let sentenceIndex = 0;
+let content = ""
+
+const typeWriter = () => {
+    if(textLine === textArray.length) {
+        return;
+    }
+    const arrLine = textArray[textLine];
+    if(content.length > 1) {
+        content = content.substring(0, content.length - 1)
+    }
+    content += arrLine.substring(sentenceIndex, ++sentenceIndex) + "_";
+
+    story.textContent = content;
+
+   
+    if(sentenceIndex === arrLine.length) {
+        content = "";
+        sentenceIndex = 0;
+        textLine++
+        setTimeout("typeWriter()", 500)
+    }
+    else {
+        setTimeout("typeWriter()", 100) 
+    }
+   
 }
 
-video.addEventListener("ended", displayPage)
+
+const displayPage = () => {
+    firstContainer.classList.remove("hidden");
+}
+
+const playSound = () => {
+    audio.play();
+    firstPage.classList.add("nodisplay");
+    secondPage.classList.remove("nodisplay");
+    setTimeout(typeWriter(), 10000)
+}
+
+video.addEventListener("ended", displayPage);
+
+playButton.addEventListener("click", playSound);
+
+
