@@ -132,13 +132,22 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     let turns = 0;
+
     while(turns < 5) {
         let playerChoice = prompt("Rock, paper, scissors, lizzard, spock!!!", "");
+
         if(playerChoice === "") {
             console.log("Game cancelled");
             return;
-        }else {
-            console.log(playRound(playerChoice, computerPlay()), `Player Score: ${playerScore}`, `Computer Score: ${computerScore}`, turns)
+        }
+        
+        else {
+            console.log(
+                playRound(playerChoice, computerPlay()), 
+                `Player Score: ${playerScore}`, 
+                `Computer Score: ${computerScore}`,
+                 `Turn: ${turns}`
+                );
             turns = (playerScore >= computerScore) ? playerScore : computerScore;
         }
     }
