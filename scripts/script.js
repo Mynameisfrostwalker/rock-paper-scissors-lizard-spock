@@ -5,6 +5,8 @@ let computerDecision;
 let turns = 0;
 
 const audio = document.querySelector("audio.creepy");
+const victory = document.querySelector("audio.victory");
+const defeat = document.querySelector("audio.defeat");
 const body = document.querySelector("body");
 const video = document.querySelector("video");
 const firstContainer = document.querySelector(".first-container");
@@ -19,14 +21,16 @@ const weapon = document.querySelector(".weapon");
 const thirdpage = document.querySelector(".thirdpage");
 const hand = document.querySelector(".righthand");
 const chant = document.querySelector(".chant");
-const scores = document.querySelector(".scores")
+const scores = document.querySelector(".scores");
+const fourthPage = document.querySelector(".fourthpage");
+const replay = document.querySelector(".replay");
+
 
 const array = ["Rock", "Paper", "Scissors", "Lizard", "Spock!"];
 
 const textArray = [
     "In the year 2055, humanity finally arrived on Mars.", 
     "Decades of global human pollution, had rendered the earth uninhabitable",
-    /*
     "The land was barren and the seas, desolate.",
     "In search of a new home, humanity arrived in droves on Mars.",
     "And for a while, all was well...",
@@ -38,7 +42,6 @@ const textArray = [
     "And now they were going to destroy humanity like the destroyed Martian civilization at its peak.",
     "Only beating them in a first to five game of rock, paper, scissors, lizzard, spock could prevent that fate",
     "Do you have what it takes to save humanity?"
-    */
 ]
 
 let textLine = 0;
@@ -185,7 +188,25 @@ function showWeaponPage() {
 }
 
 function endGame() {
-    
+    thirdpage.classList.add("nodisplay");
+    fourthPage.classList.remove("nodisplay");
+    audio.pause()
+    if(playerScore > computerScore) {
+        fourthPage.children[0].classList.remove("nodisplay");
+        victory.play()
+    } else {
+        fourthPage.children[1].classList.remove("nodisplay");
+        defeat.play()
+    }
+    playerScore = 0;
+    computerScore = 0;
+    playerDecision;
+    computerDecision;
+    turns = 0;
+    textLine = 0;
+    sentenceIndex = 0;
+    content = "";
+    timer = 0;
 }
 
 function game(playerChoice, computerChoice) {
@@ -193,7 +214,8 @@ function game(playerChoice, computerChoice) {
     let result = playRound(playerChoice, computerChoice);
     chant.children[0].textContent = result;
     if(playerScore === 5 || computerScore === 5) {
-        endGame
+        endGame()
+        return;
     }
     setTimeout("showWeaponPage()", 3000);
 }
@@ -287,6 +309,21 @@ const displayResult = () => {
     setTimeout("game(playerDecision, computerDecision)", 1000)
 }
 
+const playNewGame = () => {
+    fourthPage.classList.add("nodisplay");
+    if(fourthPage.children[0].classList.contains("nodisplay")){
+        fourthPage.children[1].classList.add("nodisplay");
+        defeat.pause()
+    }else {
+        fourthPage.children[0].classList.add("nodisplay");
+        victory.pause()
+    }
+    audio.play()
+    secondPage.classList.remove("nodisplay");
+    weapon.classList.remove("nodisplay");
+    scores.classList.add("nodisplay");
+}
+
 hand.addEventListener("animationend", displayResult)
 
 hand.addEventListener("animationstart", startChant);
@@ -299,5 +336,7 @@ deck.forEach((card) => {
     card.addEventListener("animationend", showNextCard);
     card.addEventListener("click", playGame);
 })
+
+replay.addEventListener("click", playNewGame)
 
 

@@ -20,7 +20,7 @@ video {
     min-height: 100%;
 }
 
-.firstpage, .first-container, .secondpage, .thirdpage {
+.firstpage, .first-container, .secondpage, .thirdpage, .fourthpage {
     min-height: 100vh;
     min-width: 100%;
 }
@@ -42,7 +42,7 @@ video {
     text-align: center;
 }
 
-.play-button {
+.play-button, .replay {
     font-size: 2rem;
     padding: 1rem 2rem;
     cursor: pointer;
@@ -52,7 +52,7 @@ video {
     color: white;
 }
 
-.play-button span {
+.play-button span, .replay span {
     display: inline-block; 
     position: relative;
     transition: 0.5s;
@@ -66,17 +66,17 @@ video {
     transition: 0.5s;
 }
 
-.play-button:hover span {
+.play-button:hover span, .replay:hover span {
     padding-right: 25px;
 }
 
-.play-button:hover .rocket {
+.play-button:hover .rocket, .replay:hover .rocket {
     opacity: 1;
     bottom: 0;
     right: -10px;
 }
 
-.secondpage, .thirdpage {
+.secondpage, .thirdpage, .fourthpage {
     background: url(../assets/stars.jpg) no-repeat fixed;
     background-size: cover;
     opacity: 1;
@@ -124,6 +124,7 @@ video {
     animation: movein 1s;
     animation-fill-mode: forwards;
     opacity: 0;
+    cursor: pointer;
 }
 
 @keyframes movein {
@@ -190,11 +191,22 @@ video {
     text-align: center;
 }
 
+.victory, .defeat {
+    color: aquamarine;
+    font-size: 1rem;
+    text-align: center;
+}
+
 .scores {
     color: aquamarine;
     display: flex;
     justify-content: space-around;
     width: 100%;
+}
+
+.scores p {
+    text-align: center;
+    padding: 15px;
 }
 
 .nodisplay {
