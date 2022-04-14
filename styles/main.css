@@ -87,9 +87,64 @@ video {
     justify-content: space-around;
 }
 
+.typewriter {
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .typewriter p {
     color: white;
     text-align: center;
+}
+
+.cards {
+   
+    color: aquamarine;
+    min-width: 100%;
+    max-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.card {
+    font-size: 1.3rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    transition: tranform 0.5s;
+    animation: movein 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes movein {
+    to {opacity: 1}
+}
+
+.card:hover {
+    transform: scale(1.1);
+    border: 5px solid aquamarine;
+    box-shadow: 0px 0px 20px 5px white;
+}
+
+.card i {
+    font-size: 3rem;
+}
+
+.weapon {
+    color: aquamarine;
+    font-size: 1.5rem;
+    transition: all 0.5s;
 }
 
 .hidden {
@@ -98,4 +153,8 @@ video {
 
 .nodisplay {
     display: none;
+}
+
+.hidecard {
+    animation-play-state: paused;
 }

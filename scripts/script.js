@@ -167,10 +167,13 @@ const secondPage = document.querySelector(".secondpage");
 const story = document.querySelector("p.story");
 const cards = document.querySelector(".cards");
 const typediv= document.querySelector(".typewriter");
+const deck = [...document.querySelectorAll(".card")];
+const weapon = document.querySelector(".weapon");
 
 const textArray = [
     "In the year 2055, humanity finally arrived on Mars.", 
     "Decades of global human pollution, had rendered the earth uninhabitable",
+    /*
     "The land was barren and the seas, desolate.",
     "In search of a new home, humanity arrived in droves on Mars.",
     "And for a while, all was well...",
@@ -182,14 +185,23 @@ const textArray = [
     "And now they were going to destroy humanity like the destroyed Martian civilization at its peak.",
     "Only beating them in a game of rock, paper, scissors, lizzard, spock could prevent that fate",
     "Do you have what it takes to save humanity?"
+    */
 ]
 
-let textLine = 0
+let textLine = 0;
 let sentenceIndex = 0;
-let content = ""
+let content = "";
+
+const displayCard = () => {
+    typediv.classList.add("nodisplay");
+    cards.classList.remove("nodisplay");
+    weapon.classList.remove("nodisplay");
+   deck[0].classList.remove("hidecard"); 
+}
 
 const typeWriter = () => {
     if(textLine === textArray.length) {
+        setTimeout("displayCard()", 500);
         return;
     }
     const arrLine = textArray[textLine];
@@ -219,14 +231,33 @@ const displayPage = () => {
 }
 
 const playSound = () => {
+    setTimeout(() => {
     audio.play();
     firstPage.classList.add("nodisplay");
     secondPage.classList.remove("nodisplay");
-    setTimeout(typeWriter(), 10000)
+    setTimeout(typeWriter(), 1000)
+    }, 1000)
 }
 
 video.addEventListener("ended", displayPage);
 
 playButton.addEventListener("click", playSound);
+
+const playGame = () => {
+
+}
+
+const showNextCard = (e) => {
+    if([...e.target.classList][0]=== "spock") {
+        weapon.classList.remove("hidden");
+        return;
+    }
+    e.target.nextElementSibling.classList.remove("hidecard");
+}
+
+deck.forEach((card) => {
+    card.addEventListener("animationend", showNextCard);
+    card.addEventListener("click", playGame);
+})
 
 
