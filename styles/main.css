@@ -20,7 +20,7 @@ video {
     min-height: 100%;
 }
 
-.firstpage, .first-container, .secondpage {
+.firstpage, .first-container, .secondpage, .thirdpage {
     min-height: 100vh;
     min-width: 100%;
 }
@@ -76,7 +76,7 @@ video {
     right: -10px;
 }
 
-.secondpage {
+.secondpage, .thirdpage {
     background: url(../assets/stars.jpg) no-repeat fixed;
     background-size: cover;
     opacity: 1;
@@ -101,7 +101,6 @@ video {
 }
 
 .cards {
-   
     color: aquamarine;
     min-width: 100%;
     max-height: 100vh;
@@ -122,7 +121,7 @@ video {
     align-items: center;
     padding: 0.5rem;
     transition: tranform 0.5s;
-    animation: movein 2s;
+    animation: movein 1s;
     animation-fill-mode: forwards;
     opacity: 0;
 }
@@ -147,8 +146,55 @@ video {
     transition: all 0.5s;
 }
 
+.weapon > p {
+    text-align: center;
+}
+
 .hidden {
     opacity: 0;
+}
+
+.handsdisplay {
+    color: aquamarine;
+    font-size: 6rem;
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.righthand {
+    animation: right .6s ease 9 alternate;
+    transform: scaleX(-1);
+   /* animation-fill-mode: forwards; */
+}
+
+.lefthand {
+    animation: left .6s ease 9 alternate;
+    /* animation-fill-mode: forwards; */
+}
+
+@keyframes right {
+    from {transform: scaleX(1)}
+    to {transform: rotate(90deg) scaleX(1)}
+}
+
+@keyframes left {
+    to {transform: rotate(-90deg)}
+}
+
+.chant > p {
+    color: aquamarine;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.scores {
+    color: aquamarine;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .nodisplay {
