@@ -1,3 +1,3 @@
-# Rock paper scissors, lizzard, spock
+# Rock paper scissors, lizard, spock
 
-Rock paper scissors lizzard spock game for The Odin Project.
+Rock paper scissors lizard spock game for The Odin Project.
